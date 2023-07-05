@@ -1,0 +1,34 @@
+spring:
+  ##### H2 Setting Info (H2 Console에 접속하기 위한 설정정보 입력)
+  h2:
+    console:
+      enabled: true  # H2 Console을 사용할지 여부 (H2 Console은 H2 Database를 UI로 제공해주는 기능)
+      path: /h2-console  # H2 Console의 Path
+  ##### Database Setting Info (Database를 H2로 사용하기 위해 H2연결 정보 입력)
+  datasource:
+    driver-class-name: org.h2.Driver  # Database를 H2로 사용하겠다.
+    url: jdbc:h2:~/test  # H2 접속 정보
+    username: sa  # H2 접속 시 입력할 username 정보 (원하는 것으로 입력)
+    password: 1234 # H2 접속 시 입력할 password 정보 (원하는 것으로 입력)
+  ##### JPA Setting Info (JPA 를 사용하기 위한 설정)
+  jpa:
+    # 객체를 보고 자동으로 테이블 생성 여부. 생성 - create, 비생성 - none
+    # 테스트이기 때문에 create로 설정하며
+    # 실제로는 none 으로 합니다. create이면 기존의 테이블을 전부 밀어버립니다.
+    hibernate:
+      ddl-auto: create  # option type: create, create-drop, update, validate, none
+    properties:
+      hibernate:
+        diarect: org.hibernate.dialect.H2Dialect
+        show_sql: true  # JPA 가 수행하는 쿼리를 보여줌
+        format_sql: true  # sql 보기좋게 보여줌
+        use_sql_comments: true  # 추가 정보를 주석으로 보여줌
+    database: h2
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace  # 실제 들어가는 파라미터값 찍어주는 설정

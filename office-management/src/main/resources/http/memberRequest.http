@@ -1,0 +1,11 @@
+### MemberController > create API 테스트 (Member 객체생성)
+POST http://localhost:8080/om/member/create
+Content-Type: application/json
+
+{
+  "name" : "juhyubLee2",
+  "email" : "scall24@naver.com2",
+  "nickname" : "jhlee2",
+  "age" : 29,
+  "birthday" : "1990-03-25"
+}
